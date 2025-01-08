@@ -35,7 +35,7 @@ jobs:
           else
             binary_name="instatokend-${{ matrix.goos }}-${{ matrix.goarch }}"
           fi
-          go build -v -o "$binary_name" ./instatokend.go
+          go build -v -o "$binary_name" ./main.go
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
