@@ -1,0 +1,33 @@
+name: Token Refresh
+
+on:
+  schedule:
+    # Every day at 8:00 UTC
+    # - cron: '0 8 * * *'
+    # Every 3 days at 8:00 UTC
+    #- cron: '0 8 */3 * *'
+    # First day of every month at 8:00 UTC
+    #- cron: '0 8 1 * *'
+    # Current: Every Monday at 8:00 UTC
+    - cron: '0 8 * * 1'
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    - run: npm ci
+    - run: npm start
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Update tokens log"
+        branch: ${{ github.ref_name }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

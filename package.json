@@ -1,0 +1,20 @@
+{
+  "name": "instatoken-ga",
+  "version": "1.0.0",
+  "description": "Automatically refresh Instagram access tokens",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasper-clarke/instatoken-refreshers.git#instatoken-ga"
+  },
+  "author": "jasper-clarke",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jasper-clarke/instatoken-refreshers/issues"
+  },
+  "homepage": "https://github.com/jasper-clarke/instatoken-refreshers/tree/instatoken-ga#readme"
+}
