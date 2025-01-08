@@ -19,5 +19,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: 'build.yml',
-              ref: 'main'  # This workflow is now on main branch
+              ref: 'instatokend'
             });
