@@ -1,0 +1,23 @@
+name: Rebuild Artifacts
+on:
+  schedule:
+    # Run every 80 days at midnight UTC
+    - cron: "0 0 */30 * *"
+  workflow_dispatch: # Allow manual triggers too
+
+jobs:
+  trigger-build:
+    name: Trigger Build Workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Build Binary Workflow
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'build.yml',
+              ref: 'main'  # This workflow is now on main branch
+            });
